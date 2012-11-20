@@ -1,7 +1,7 @@
 DocTor
 ======
 
-Chaîne d'intégration continue pour la production de documents pédagogiques multi-supports
+Chaîne d'intégration continu pour la production de documents pédagogiques multi-formats.
 
 Test commit
 
