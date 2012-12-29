@@ -1,4 +1,6 @@
 DocTor::Application.routes.draw do
+  get "cours/tous"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
