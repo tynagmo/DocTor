@@ -1,6 +1,6 @@
 <h1>Liste des cours</h1>
 <p><ul>
-	<%Dir.chdir("public/cours") do
+	<%Dir.chdir("public/cours/txt") do
 		Dir.glob("*.txt").each do |nom| %>
 		<li><%= nom %></li>
 	<%	end
@@ -8,6 +8,10 @@
    </ul>
 </p>
 
+<p>
+<%= link_to 'html', :controller=>'cours', :action=>'html' %>
+<%= link_to 'pdf', :controller=>'cours', :action=>'pdf' %>
+</p>
 
 <p><br/><br/>Find me in app/views/cours/tous.html.erb</p>
 
