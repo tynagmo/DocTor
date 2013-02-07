@@ -17,7 +17,33 @@ describe CoursController do
       get 'tous'
       response.should have_selector("title",
       								:content => @base_title + " - Tous les cours")
-	end    
+	  end    
+  end
+
+  describe "GET 'html'" do
+    it "devrait reussir" do
+      get 'html'
+      response.should be_success
+    end
+
+    it "devrait avoir le bon titre" do
+      get 'html'
+      response.should have_selector("title",
+                        :content => @base_title + " - Générer pages HTML")
+    end
+  end
+
+  describe "GET 'pdf'" do
+    it "devrait resussir" do
+      get 'pdf'
+      response.should be_success
+    end
+
+    it "devrait avoir le bon titre" do
+      get 'pdf'
+      response.should have_selector("title",
+                      :content => @base_title + " - Générer cours PDF"
+    end
   end
 
 end
