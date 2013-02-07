@@ -6,4 +6,7 @@ Chaîne d'intégration continu pour la production de documents pédagogiques mul
 
 Travail sur la branche dev
 
-1 page d'affichage des cours
+page d'acceuil
+page avec tous les cours (avec lien pour voir les pages html et lien pour télécharger les cours pdf)
+génération des html
+génération des pdf
