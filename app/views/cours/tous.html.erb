@@ -1,17 +1,17 @@
 <h1>Liste des cours</h1>
 <p><ul>
-	<%Dir.chdir("public/cours/txt") do
-		Dir.glob("*.txt").each do |nom| %>
-		<li><%= nom %></li>
+	<%Dir.chdir("public/cours/html") do
+		Dir.glob("*.html").each do |nom| 
+			complet=nom.split(".")
+  		nom=complet[0]%>
+		<li><%= link_to nom, "html/#{nom}.html" %>, <%= link_to '(télécharger en pdf)', "pdf/#{nom}.pdf" %></li>
 	<%	end
 	  end%>
    </ul>
 </p>
 
 <p>
-<%= link_to 'html', :controller=>'cours', :action=>'html' %>
-<%= link_to 'pdf', :controller=>'cours', :action=>'pdf' %>
+	<%= link_to 'générer les html', :controller=>'cours', :action=>'html' %>
+	<%= link_to 'générer les pdf', :controller=>'cours', :action=>'pdf' %>
 </p>
-
-<p><br/><br/>Find me in app/views/cours/tous.html.erb</p>
 

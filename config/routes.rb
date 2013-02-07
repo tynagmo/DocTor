@@ -9,6 +9,8 @@ DocTor::Application.routes.draw do
 
 
   match '/', :to => 'main#home'
+  match "html/*", :to => redirect("/cours/html")
+  match "pdf/*", :to => redirect("/cours/pdf")
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
