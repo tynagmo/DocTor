@@ -29,7 +29,7 @@ describe CoursController do
     it "devrait avoir le bon titre" do
       get 'html'
       response.should have_selector("title",
-                        :content => @base_title + " - Generer pages HTML")
+                        :content => @base_title + " - Générer pages HTML")
     end
   end
 
@@ -42,7 +42,7 @@ describe CoursController do
     it "devrait avoir le bon titre" do
       get 'pdf'
       response.should have_selector("title",
-                      :content => @base_title + " - Generer pages PDF")
+                      :content => @base_title + " - Générer cours PDF"
     end
   end
 

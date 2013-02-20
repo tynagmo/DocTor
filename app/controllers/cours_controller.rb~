@@ -4,7 +4,7 @@ class CoursController < ApplicationController
   end
 
   def html
-@titre = "Generer pages HTML"
+@titre = "Générer pages HTML"
   	Dir.chdir("public/cours/txt") do 
   		Dir.glob("*.txt") do |file|
   			
@@ -19,7 +19,7 @@ class CoursController < ApplicationController
   end	
 
   def pdf
-@titre = "Generer pages PDF"
+@titre = "Générer pages PDF"
   	Dir.chdir("public/cours/html") do
   		Dir.glob("*.html") do |file|
   			
