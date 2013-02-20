@@ -4,7 +4,7 @@
 		Dir.glob("*.html").each do |nom| 
 			complet=nom.split(".")
   		nom=complet[0]%>
-		<li><%= link_to nom, "html/#{nom}.html" %>, <%= link_to '(télécharger en pdf)', "pdf/#{nom}.pdf" %></li>
+		<li><%= link_to nom, "html/#{nom}.html" %>, <% if FileTest.exists?("../pdf/#{nom}.pdf") %><%= link_to '(télécharger en pdf)', "pdf/#{nom}.pdf" %><% end %></li>
 	<%	end
 	  end%>
    </ul>
