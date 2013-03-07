@@ -1,0 +1,11 @@
+<p>
+<%= @nomCours %> <br/>
+<%= @auteur %> <br/>
+<%= @date %> <br/>
+</p>
+
+
+
+<%= link_to 'supprimer', :controller=>'admin', :action=>'supprimerCours', :dossier=>File.dirname(@ficConf) %> <br/>
+<%= link_to 'générer un Html', :controller=>'admin', :action=>'genererUnHtml', :dossier=>File.dirname(@ficConf) %> <br/>
+<%= link_to 'générer un Pdf', :controller=>'admin', :action=>'genererUnPdf', :dossier=>File.dirname(@ficConf) %> <br/>

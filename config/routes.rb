@@ -1,6 +1,14 @@
 DocTor::Application.routes.draw do
-  get "main/home"
+  
+  get "admin/tous"
+  get "admin/detail"
+  get "admin/supprimerCours"
+  get "admin/genererTousLesHtml"
+  get "admin/genererTousLesPdf"
+  get "admin/genererUnHtml"
+  get "admin/genererUnPdf"
 
+  get "main/home"
   get "main/about"
 
   get "cours/tous"

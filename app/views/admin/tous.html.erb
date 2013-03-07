@@ -1,0 +1,20 @@
+<h1>Liste des cours</h1>
+<p><ul>
+	<%Dir.chdir("public/cours") do
+		Dir.glob("./*/config").each do |cours| 
+			
+
+fic =File.open(cours,'r')
+nom = fic.readline%>
+
+
+
+
+			<li><%= link_to nom, :controller=>'admin', :action=>'detail', :cours=>cours%></li>
+		<%	end
+	  end%>
+
+	<%= link_to 'générer les html', :controller=>'admin', :action=>'genererTousLesHtml' %>
+	<%= link_to 'générer les pdf', :controller=>'admin', :action=>'genererTousLesPdf' %>
+
+</ul></p>
