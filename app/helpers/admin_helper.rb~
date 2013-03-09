@@ -1,6 +1,6 @@
 module AdminHelper
 
-def pathCours()
+def pathCours
 return "public/cours/"
 end
 
