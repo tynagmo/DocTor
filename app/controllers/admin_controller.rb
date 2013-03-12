@@ -53,7 +53,7 @@ require "admin_helper"
 
   def genererTousLesHtml
   	@titre = "Generer documents HTML"
-  	Dir.chdir(pathCours) do 
+  	Dir.chdir("public/cours") do 
   		Dir.glob("./*/main.txt").each do |main|  			
 
   			puts `asciidoc #{main}`
