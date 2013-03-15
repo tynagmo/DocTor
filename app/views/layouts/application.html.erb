@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DocTor - <%= @titre %></title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= csrf_meta_tag %>
+	<title>DocTor - <%= @titre %></title>
+	<%= stylesheet_link_tag    "application", media: "all" %>
+	<%= csrf_meta_tag %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<%= link_to 'DocTOR','/', :class => 'brand' %>
+					<ul class="nav">
+						<li><%= link_to 'Cours','/cours/tous' %></li>
+						<li><%= link_to 'Admin','/admin/tous' %></li>
+					</ul>
+					<ul class="nav pull-right">
+						<li><a href="#">À propos</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%= yield %>
+	</div>
 </body>
 </html>
