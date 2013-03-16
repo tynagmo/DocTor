@@ -14,6 +14,8 @@ DocTor::Application.routes.draw do
   get "cours/tous"
   get "cours/html"
   get "cours/pdf"
+  get "cours/detail"
+
 
 
   match '/', :to => 'main#home'

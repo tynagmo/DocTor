@@ -1,0 +1,9 @@
+<h1>Détail du cours</h1>
+
+<p><ul>
+		<% if FileTest.exists?("public/cours/#{@path}/main.html") %><%= link_to 'consulter le html', "#{@path}/main.html" %><% end %> <br/>
+		<% if FileTest.exists?("public/cours/#{@path}/main.pdf") %><%= link_to 'télécharger le pdf', "#{@path}/main.pdf" %><% end %>  <br/>
+		
+	
+   </ul>
+</p>

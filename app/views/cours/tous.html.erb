@@ -1,17 +1,22 @@
 <h1>Liste des cours</h1>
 <p><ul>
-	<%Dir.chdir("public/cours/html") do
-		Dir.glob("*.html").each do |nom| 
-			complet=nom.split(".")
-  		nom=complet[0]%>
-		<li><%= link_to nom, "html/#{nom}.html" %>, <% if FileTest.exists?("../pdf/#{nom}.pdf") %><%= link_to '(télécharger en pdf)', "pdf/#{nom}.pdf" %><% end %></li>
-	<%	end
-	  end%>
-   </ul>
-</p>
+	<%Dir.chdir("public/cours") do
+		Dir.glob("./*/config").each do |cours| 
+			
 
-<p>
-	<%= link_to 'générer les html', :controller=>'cours', :action=>'html' %>
-	<%= link_to 'générer les pdf', :controller=>'cours', :action=>'pdf' %>
-</p>
+fic =File.open(cours,'r')
+nom = fic.readline
+path=cours.split("/")
+dossier = path[1]
+%>
+
+			<li><%= link_to nom, :controller=>'cours', :action=>'detail', :cours=>cours%></li>
+		<%	end
+	  end%>
+
+</ul></p>
+
+
+
+
 

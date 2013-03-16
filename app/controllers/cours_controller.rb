@@ -3,6 +3,21 @@ class CoursController < ApplicationController
   	@titre = "Tous les cours"
   end
 
+  def detail
+    @titre = "Detail du cours"
+    @dossier = params[:cours]
+    @dossierFinal = @dossier.split("/")
+    @path = @dossierFinal[1]
+
+    Dir.chdir("public/cours/") do
+    #inutile car déjà fait déjà fait dans la vue
+      fic = File.open(@dossier, 'r')
+      @nomCours = fic.readline
+      @auteur = fic.readline
+      @date = fic.readline
+    end
+  end
+
   def html
 @titre = "Generer pages HTML"
   	Dir.chdir("public/cours/txt") do 
