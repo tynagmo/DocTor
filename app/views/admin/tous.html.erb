@@ -1,19 +1,21 @@
 <h1>Liste des cours</h1>
 <p><ul>
-	<%Dir.chdir("public/cours") do
-		Dir.glob("./*/config").each do |cours| 
-			
+	<div class="row-fluid">
+		<div class="offset2 span8">
+			<div class="well" style="padding: 8px 0;">
+				<ul class="nav nav-list">
+					<% Dir.chdir("public/cours") do
+						Dir.glob("./*/config").each do |cours| 
+						fic =File.open(cours,'r')
+						nom = fic.readline%>
 
-fic =File.open(cours,'r')
-nom = fic.readline%>
-
-
-
-
-			<li><%= link_to nom, :controller=>'admin', :action=>'detail', :cours=>cours%></li>
-		<%	end
-	  end%>
-
+						<li><%= link_to nom, :controller=>'admin', :action=>'detail', :cours=>cours%></li>
+					<% end
+					end %>
+				</ul>
+			</div>
+		</div>
+	</div>
 	<%= link_to 'générer les html', :controller=>'admin', :action=>'genererTousLesHtml' %>
 	<%= link_to 'générer les pdf', :controller=>'admin', :action=>'genererTousLesPdf' %>
 
