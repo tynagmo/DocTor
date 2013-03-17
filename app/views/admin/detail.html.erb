@@ -1,12 +1,37 @@
-<h2><%= @nomCours %> </h2>
-<p>
-Auteur : <%= @auteur %> <br/>
-Date de dernière mise à jour : <%= @date %> <br/>
-</p>
-
-
-<p>
-<%= link_to 'Générer le Html', {:controller=>'admin', :action=>'genererUnHtml', :dossier=>File.dirname(@ficConf)}, :class => 'btn' %> 
-<%= link_to 'Générer le Pdf', {:controller=>'admin', :action=>'genererUnPdf', :dossier=>File.dirname(@ficConf)}, :class => 'btn' %> 
-<%= link_to "Supprimer", {:controller=>'admin', :action=>'supprimerCours', :dossier=>File.dirname(@ficConf)}, :class => 'btn btn-danger' %> 
-</p>
+<div class="row">
+	<div class="offset3 span6">
+		<div class="well">
+			<h2><%= @nomCours %> </h2>
+			<p>
+			Auteur : <%= @auteur %> <br/>
+			Date de dernière mise à jour : <%= @date %> <br/>
+			</p>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="offset3 span6">
+		Générer :<br>
+		<%= link_to 'HTML', {:controller=>'admin', :action=>'genererUnHtml', :dossier=>File.dirname(@ficConf)}, :class => 'btn' %>
+		<%= link_to 'PDF', {:controller=>'admin', :action=>'genererUnPdf', :dossier=>File.dirname(@ficConf)}, :class => 'btn' %>
+		<button onClick="confirm()" class="btn btn-danger pull-right">Supprimer</button>
+	</div>
+</div>
+<div class="modal hide fade" id="modSupCours">
+	<div class="modal-header">
+		<button class="close" data-dismiss="modal">×</button>
+		<h3>Suppression</h3>
+	</div>
+	<div class="modal-body">
+		Êtes-vous sûr de vouloir supprimer ce cours ?
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+		<%= link_to "Supprimer", {:controller=>'admin', :action=>'supprimerCours', :dossier=>File.dirname(@ficConf)}, :class => 'btn btn-danger' %>
+	</div>
+</div>
+<script type="text/javascript">
+	function confirm () {
+		$('#modSupCours').modal('show');
+	}
+</script>

@@ -1,8 +1,14 @@
-<h1>Détail du cours</h1>
-
-<p> Dernière mise à jour du cours : le <%=@date%> </p>
-
-<p>
-	<% if FileTest.exists?("public/cours/#{@path}/main.html") %><%= link_to 'Consulter le cours', "#{@path}/main.html", :class => 'btn' %><% end %> 
-	<% if FileTest.exists?("public/cours/#{@path}/main.pdf") %><%= link_to 'Obtenir le pdf', "#{@path}/main.pdf", :class => 'btn' %><% end %>  <br/>
-</p>
+<div class="row">
+	<div class="offset3 span6">
+		<div class="well">
+			<h1>Détail du cours</h1>
+			<p> Dernière mise à jour du cours : le <%=@date%> </p>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="offset3 span6">
+		<% if FileTest.exists?("public/cours/#{@path}/main.html") %><%= link_to 'Consulter le cours', "#{@path}/main.html", :class => 'btn' %><% end %> 
+		<% if FileTest.exists?("public/cours/#{@path}/main.pdf") %><%= link_to 'Obtenir le pdf', "#{@path}/main.pdf", :class => 'btn' %><% end %>
+	</div>
+</div>
