@@ -1,11 +1,12 @@
+<h2><%= @nomCours %> </h2>
 <p>
-<%= @nomCours %> <br/>
-<%= @auteur %> <br/>
-<%= @date %> <br/>
+Auteur : <%= @auteur %> <br/>
+Date de dernière mise à jour : <%= @date %> <br/>
 </p>
 
 
-
-<%= link_to 'supprimer', :controller=>'admin', :action=>'supprimerCours', :dossier=>File.dirname(@ficConf) %> <br/>
-<%= link_to 'générer un Html', :controller=>'admin', :action=>'genererUnHtml', :dossier=>File.dirname(@ficConf) %> <br/>
-<%= link_to 'générer un Pdf', :controller=>'admin', :action=>'genererUnPdf', :dossier=>File.dirname(@ficConf) %> <br/>
+<p>
+<%= link_to 'Générer le Html', {:controller=>'admin', :action=>'genererUnHtml', :dossier=>File.dirname(@ficConf)}, :class => 'btn' %> 
+<%= link_to 'Générer le Pdf', {:controller=>'admin', :action=>'genererUnPdf', :dossier=>File.dirname(@ficConf)}, :class => 'btn' %> 
+<%= link_to "Supprimer", {:controller=>'admin', :action=>'supprimerCours', :dossier=>File.dirname(@ficConf)}, :class => 'btn btn-danger' %> 
+</p>
