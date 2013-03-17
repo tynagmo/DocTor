@@ -9,3 +9,10 @@ body {
 .center {
   text-align: center;
 }
+
+@media (max-width: 767px) {
+  div.modal { // Added more weight to the selector to override
+    &.fade { top: -100px; }
+    &.fade.in { top: 20px; }
+  }
+}
