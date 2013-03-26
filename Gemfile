@@ -4,7 +4,10 @@ gem 'rails', '3.1'
 gem 'sqlite3'
 gem 'carrierwave'
 gem 'sass-rails',   '~> 3.1'
-gem 'bootstrap-sass', '2.1'
+gem 'jquery-rails'
+gem 'coffee-rails', '~> 3.1.1'
+gem 'uglifier', '>= 1.0.3'
+gem 'bootstrap-sass', '2.2.2'
 
 group :development do
   gem 'rspec-rails', '2.5.0'

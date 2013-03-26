@@ -1,3 +1,11 @@
+=begin rdoc
+= cours_controller.rb : contrôleur pour la consultation des cours 
+
+2 méthodes : 
+- tous : permet de définir lea variable @titre
+- detail : permet de récupérer le nom du répertoire du cours ainsi que des informations sur le cours contenues dans un fichier config
+=end
+
 class CoursController < ApplicationController
   def tous
   	@titre = "Tous les cours"
@@ -6,45 +14,24 @@ class CoursController < ApplicationController
   def detail
     @titre = "Detail du cours"
     @dossier = params[:cours]
-    @dossierFinal = @dossier.split("/")
-    @path = @dossierFinal[1]
+    
+    # permet de récupérer le nom du répertoire du cours (passé en paramètre dans la vue tous.html.erb)
+    if (@dossier != nil)
+      @dossierFinal = @dossier.split("/")
+    
+    # la méthode split permet de garder uniquement le nom du réperoire (on enlève /config)
+      @path = @dossierFinal[1]
+      # cette variable contient finalement le nom du répertoire du cours (utilisé dans la vue detail.html.erb)
 
-    Dir.chdir("public/cours/") do
-    #inutile car déjà fait déjà fait dans la vue
-      fic = File.open(@dossier, 'r')
-      @nomCours = fic.readline
-      @auteur = fic.readline
-      @date = fic.readline
+      Dir.chdir("public/cours/") do
+        fic = File.open(@dossier, 'r')
+        @nomCours = fic.readline
+        @author = fic.readline
+        @date = fic.readline
+        # on ouvre le fichier config du cours et on récupère des informations sur le cours (le fichier config doit pour cela respecter un certain format)
+      end
     end
   end
 
-  def html
-@titre = "Generer pages HTML"
-  	Dir.chdir("public/cours/txt") do 
-  		Dir.glob("*.txt") do |file|
-  			
-  			# on récupère le nom du fichier sans l'extension
-  			complet=file.split(".")
-  			name=complet[0]
 
-  			puts `asciidoc #{file}`
-  			puts `mv -f #{name}.html ../html/`
-  		end
-  	end		
-  end	
-
-  def pdf
-@titre = "Generer pages PDF"
-  	Dir.chdir("public/cours/html") do
-  		Dir.glob("*.html") do |file|
-  			
-  			#on supprime l'entension .html
-  			complet=file.split(".")
-  			name=complet[0]
-
-  			puts `wkhtmltopdf #{file} #{name}.pdf`
-  			puts `mv -f #{name}.pdf ../pdf/`
-  		end
-  	end
-  end
 end

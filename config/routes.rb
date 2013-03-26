@@ -17,8 +17,10 @@ DocTor::Application.routes.draw do
   get "cours/detail"
 
 
-
+  # Pages d'accueil et d'informations
   match '/', :to => 'main#home'
+  match '/about', :to => 'main#about'
+
   match "html/*", :to => redirect("/cours/html")
   match "pdf/*", :to => redirect("/cours/pdf")
 

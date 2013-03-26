@@ -1,26 +1,24 @@
-<h1>Liste des cours</h1>
-<p>
-<div class="row-fluid">
-  <div class="offset1 span6">
+<div class="row">
+  <div class="offset3 span6">
+  	<h1>Liste des cours</h1>
 	<div class="well" style="padding: 8px 0;">
-				
 		<ul class="nav nav-list">
 		<%Dir.chdir("public/cours") do
+			# on se place dans le répertoire qui contient tous les cours
 			Dir.glob("./*/config").each do |cours| 
 				fic =File.open(cours,'r')
-				nom = fic.readline
+				nom = fic.readline.split(":title: ")[1]
 				path=cours.split("/")
 				dossier = path[1]
+				# pour chaque fichier config, on récupère le nom de l'auteur, et on récupère le nom du répertoire du cours
 				%>
 				<li><%= link_to nom, :controller=>'cours', :action=>'detail', :cours=>cours%></li>
 			<%end
 		  end%>
+		</ul>
 	</div>
   </div>
 </div>
-</ul></p>
-
-
 
 
 

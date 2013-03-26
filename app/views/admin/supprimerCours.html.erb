@@ -1,3 +1,17 @@
-<p>Le cours a été supprimé</p>
-<%= @dossier %>
-<%= link_to "Accueil admin", :controller=>'admin', :action=>'tous' %>
+<div class="row">
+	<div class="offset3 span6">
+		<div class="alert alert-success">
+			<h2>Cours supprimé</h2>
+			<p>
+				Le cours (<%= @dossier %>) a bien été supprimé<br>
+			</p>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="offset3 span6">
+		<div class="center">
+			<%= link_to "Accueil admin", {:controller=>'admin', :action=>'tous'}, :class => 'btn btn-primary bnt-large' %>
+		</div>
+	</div>
+</div>

@@ -20,29 +20,16 @@ describe CoursController do
 	  end    
   end
 
-  describe "GET 'html'" do
+  describe "GET 'detail'" do
     it "devrait reussir" do
-      get 'html'
+      get 'detail'
       response.should be_success
     end
 
-    it "devrait avoir le bon titre" do
-      get 'html'
+     it "devrait avoir le bon titre" do
+      get 'detail'
       response.should have_selector("title",
-                        :content => @base_title + " - Generer pages HTML")
-    end
-  end
-
-  describe "GET 'pdf'" do
-    it "devrait resussir" do
-      get 'pdf'
-      response.should be_success
-    end
-
-    it "devrait avoir le bon titre" do
-      get 'pdf'
-      response.should have_selector("title",
-                      :content => @base_title + " - Generer pages PDF")
+                        :content => @base_title + " - Detail du cours")
     end
   end
 
