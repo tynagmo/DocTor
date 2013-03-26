@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe AdminController do
+  render_views
 
   describe "GET 'tous'" do
     it "should be successful" do

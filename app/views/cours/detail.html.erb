@@ -2,7 +2,7 @@
 	<div class="offset3 span6">
 		<div class="well">
 			<h1>Détail du cours</h1>
-			<p> Dernière mise à jour du cours : le <%=@date%> </p>
+			<p> Dernière mise à jour du cours : le <%=@date.split(":date: ")[1]%> par <%=@author.split(":author: ")[1]%> </p>
 		</div>
 	</div>
 </div>

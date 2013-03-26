@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class CoursController - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>cours_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ApplicationController
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-detail">#detail</a>
+    
+    <li><a href="#method-i-tous">#tous</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./CoursController.html">CoursController</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class CoursController</h1>
+
+  <div id="description" class="description">
+    
+<h1 id="label-cours_controller.rb+%3A+contr%C3%B4leur+pour+la+consultation+des+cours+">cours_controller.rb : contrôleur pour la consultation des cours </h1>
+
+<p>2 méthodes :</p>
+<ul><li>
+<p>tous : permet de définir lea variable @titre</p>
+</li><li>
+<p>detail : permet de récupérer le nom du répertoire du cours ainsi que des
+informations sur le cours contenues dans un fichier config</p>
+</li></ul>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-detail" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">detail</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="detail-source">
+            <pre><span class="ruby-comment"># File cours_controller.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">detail</span>
+  <span class="ruby-ivar">@titre</span> = <span class="ruby-string">&quot;Detail du cours&quot;</span>
+  <span class="ruby-ivar">@dossier</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:cours</span>]
+  <span class="ruby-comment"># permet de récupérer le nom du répertoire du cours (passé en paramètre dans la vue tous.html.erb)</span>
+  <span class="ruby-ivar">@dossierFinal</span> = <span class="ruby-ivar">@dossier</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;/&quot;</span>)
+  <span class="ruby-comment"># la méthode split permet de garder uniquement le nom du réperoire (on enlève /config)</span>
+  <span class="ruby-ivar">@path</span> = <span class="ruby-ivar">@dossierFinal</span>[<span class="ruby-value">1</span>]
+  <span class="ruby-comment"># cette variable contient finalement le nom du répertoire du cours (utilisé dans la vue detail.html.erb)</span>
+
+  <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span>(<span class="ruby-string">&quot;public/cours/&quot;</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">fic</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-ivar">@dossier</span>, <span class="ruby-string">'r'</span>)
+    <span class="ruby-ivar">@nomCours</span> = <span class="ruby-identifier">fic</span>.<span class="ruby-identifier">readline</span>
+    <span class="ruby-ivar">@auteur</span> = <span class="ruby-identifier">fic</span>.<span class="ruby-identifier">readline</span>
+    <span class="ruby-ivar">@date</span> = <span class="ruby-identifier">fic</span>.<span class="ruby-identifier">readline</span>
+    <span class="ruby-comment"># on ouvre le fichier config du cours et on récupère des informations sur le cours (le fichier config doit pour cela respecter un certain format)</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- detail-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- detail-method -->
+
+    
+      <div id="method-i-tous" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tous</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tous-source">
+            <pre><span class="ruby-comment"># File cours_controller.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tous</span>
+      <span class="ruby-ivar">@titre</span> = <span class="ruby-string">&quot;Tous les cours&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- tous-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- tous-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

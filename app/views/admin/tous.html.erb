@@ -6,7 +6,7 @@
 				<% Dir.chdir("public/cours") do
 					Dir.glob("./*/config").each do |cours| 
 					fic =File.open(cours,'r')
-					nom = fic.readline%>
+					nom = fic.readline.split(":title: ")[1]%>
 
 					<li><%= link_to nom, :controller=>'admin', :action=>'detail', :cours=>cours%></li>
 				<% end
