@@ -8,8 +8,8 @@
 			Dir.glob("./*/config").each do |cours| 
 				fic =File.open(cours,'r')
 				nom = fic.readline.split(":title: ")[1]
-				path=cours.split("/")
-				dossier = path[1]
+				# path=cours.split("/")
+				# dossier = path[1]
 				# pour chaque fichier config, on récupère le nom de l'auteur, et on récupère le nom du répertoire du cours
 				%>
 				<li><%= link_to nom, :controller=>'cours', :action=>'detail', :cours=>cours%></li>

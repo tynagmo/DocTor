@@ -13,7 +13,7 @@
 
 class AdminController < ApplicationController
   
-require "admin_helper"
+#require "admin_helper"
 
   # la page d'accueil de la partie administration avec la liste de tous les cours
   def tous
@@ -24,14 +24,17 @@ require "admin_helper"
   def detail
 	  @titre = "Detail du cours"
 	  @ficConf = params[:cours]
+
+    if (@ficConf != nil)
 		
 		# on récupère les différentes informations du fichier config
-	  Dir.chdir("public/cours") do
-		  fic = File.open(@ficConf, 'r')
-		  @nomCours = fic.readline  # la première ligne doit être le nom du cours complet
-		  @auteur = fic.readline	# la deuxième ligne doit être le nom de l'auteur
-		  @date = fic.readline		# la troisiéme ligne doit être la date de dernière modification
-	  end
+  	  Dir.chdir("public/cours") do
+  		  fic = File.open(@ficConf, 'r')
+  		  @nomCours = fic.readline.split(":title: ")[1]  # la première ligne doit être le nom du cours complet
+  		  @author = fic.readline.split(":author: ")[1]	# la deuxième ligne doit être le nom de l'auteur
+  		  @date = fic.readline.split(":date: ")[1]		# la troisiéme ligne doit être la date de dernière modification
+  	  end
+    end
   end
 	
   # la page qui supprime un cours (aucun rendu html)

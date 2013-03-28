@@ -25,9 +25,9 @@ class CoursController < ApplicationController
 
       Dir.chdir("public/cours/") do
         fic = File.open(@dossier, 'r')
-        @nomCours = fic.readline
-        @author = fic.readline
-        @date = fic.readline
+        @nomCours = fic.readline.split(":title: ")[1]
+        @author = fic.readline.split(":author: ")[1]
+        @date = fic.readline.split(":date: ")[1]
         # on ouvre le fichier config du cours et on récupère des informations sur le cours (le fichier config doit pour cela respecter un certain format)
       end
     end
